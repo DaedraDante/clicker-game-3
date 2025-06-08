@@ -1,4 +1,8 @@
-
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --text-color: #d2f1ed;
+}
 body {
   font-family: "Press Start 2P", system-ui;
   font-style: normal;
@@ -68,7 +72,7 @@ body {
   justify-content: center;
   padding: 12px 28px;
   font-size: 1.25rem;
-  color: white;
+  color: var(--text-color);
   background: hsl(217, 33%, 17%);
   border-radius: 8px;
   transform: translateY(-4px);
@@ -102,7 +106,23 @@ body {
 }
 
 .game-title {
-  font-size: 2rem;
+  font-size: 4.5rem;
   text-align: center;
   margin-bottom: 20px;
+  color: var(--text-color);
+
+}
+.main-menu-buttons-div {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12rem;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+.main-menu-buttons-div button {
+  width: 350px;
+  height: 50px;
+  font-size: 1.2rem;
 }

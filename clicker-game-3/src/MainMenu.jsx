@@ -1,31 +1,31 @@
 
-function MainMenu() {
+function MainMenu({onPlay, onOptions, onCredits}) {
     return (
         <>
           <div>
               <h1 className="game-title">Pixmin</h1>
               <div className="main-menu-buttons-div">
-                  <button class="button">
+                <button class="button" onClick={onPlay}>
                     <span class="shadow"></span>
                     <span class="edge"></span>
                     <div class="front">
-                        <span>MainMenu</span>
+                        <span>Play</span>
                     </div>
-                  </button>
-                                     <button class="button">
+                </button>
+                <button class="button">
                     <span class="shadow"></span>
                     <span class="edge"></span>
                     <div class="front">
                         <span>Options</span>
                     </div>
-                   </button>
-                                     <button class="button">
+                </button>
+                <button class="button">
                     <span class="shadow"></span>
                     <span class="edge"></span>
                     <div class="front">
                         <span>Credits</span>
                     </div>
-                   </button>
+                </button>
                </div>
           </div>
         </>

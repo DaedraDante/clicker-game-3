@@ -2,14 +2,19 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import MainMenu from './MainMenu'
+import ClickerScreen from './ClickerScreen'
 
 function App() {
   
-
+  const [screen, setScreen] = useState('MainMenu')
   return (
     <>
-     <MainMenu></MainMenu>
+    {screen === 'MainMenu' && <MainMenu onPlay={() => setScreen('ClickerScreen')} 
+    onOptions={() => setScreen('options')} 
+    onCredits={() => setScreen('credits')} />}
+    {screen === 'ClickerScreen' && <ClickerScreen setScreen={setScreen} />}
     </>
+    
   )
 }
 
