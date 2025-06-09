@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
+  --primary-color: #30bbdd;
+  --secondary-color: #76d7f0;
   --text-color: #d2f1ed;
 }
 body {
@@ -125,4 +125,64 @@ body {
   width: 350px;
   height: 50px;
   font-size: 1.2rem;
+}
+.clicker-stage {
+  background-color: var(--primary-color);
+  height: 95vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.img-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex:6;
+}
+.pixmin-img {
+  width: 32rem;
+  height: 26rem;
+  margin-top: -12rem;
+  transform: scale(1);
+  transition: transform 0.1s ease-in-out;
+}
+.pixmin-img:active {
+  transform: scale(0.925);
+  transition: transform 0.1s ease-in-out;
+}
+.money-text {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-top: 20px;
+}
+.upgrades-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 5px solid var(--secondary-color);
+  padding: 1rem;
+  flex:4;
+}
+.upgrade-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.upgrade-div button {
+  width: 10rem;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
