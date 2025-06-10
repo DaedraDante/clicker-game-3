@@ -172,15 +172,34 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
 }
+.upgrades-img h2{
+  cursor: pointer;
+}
+.upgrades-img h2:hover {
+  color: var(--text-color);
+}
+.stats-img h2 {
+  cursor: pointer;
+}
+.stats-img h2:hover {
+  color: var(--text-color);
+}
+.achievements-img h2 {
+  cursor: pointer;
+}
+.achievements-img h2:hover {
+  color: var(--text-color);
+}
 .upgrades-div {
-  display: none;
+  display: block;
 }
 .stats-div {
   display: block;
 }
 .achievements-div {
-  display: none;
+  display: block;
 }
+
 .upgrade-div {
   display: flex;
   flex-direction: column;

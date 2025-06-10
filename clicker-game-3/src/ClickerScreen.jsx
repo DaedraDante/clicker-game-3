@@ -1,10 +1,26 @@
 import pixminn from './assets/pixminn.png';
 import { useState } from 'react';
+import Upgrades from './Upgrades';
+import Stats from './Stats';
+import Achievements from './Achievements';
+
+
 function ClickerScreen({setScreen}) {
     
+    const [section, setSection] = useState("Stats")
     const [dabloons, setDabaloons] = useState(0);
     const [increaseAmount, setIncreaseAmount] = useState(1);
     const [upgrade1Cost, setUpgrade1Cost] = useState(30);
+
+    const handleUpgradeSectionChange = () => {
+        setSection("Upgrades");
+    };
+    const handleStatsSectionChange = () => {
+        setSection("Stats");
+    };
+    const handleAchievementsSectionChange = () => {
+        setSection("Achievements");
+    };
 
     const handleClick = () => {
         setDabaloons(dabloons + increaseAmount);
@@ -29,50 +45,20 @@ function ClickerScreen({setScreen}) {
             <div className='right-div'> 
                 <div className='select-bar'>
                     <div className='upgrades-img'>
-                        <h2>Upgrades</h2>
+                        <h2 onClick={handleUpgradeSectionChange}>Upgrades</h2>
                     </div>
                     <div className='stats-img'>
-                        <h2>Stats</h2>
+                        <h2 onClick={handleStatsSectionChange}>Stats</h2>
                     </div>
                     <div className='achievements-img'>
-                        <h2>Achievements</h2>
+                        <h2 onClick={handleAchievementsSectionChange}>Achievements</h2>
                     </div>
                 </div>
                 <div className='content-div'>
-                    <div className='upgrades-div'>
-                        <div className="upgrade-div">
-                            <p>Upgrade 1</p>
-                            <button onClick={handleUpgrade1}>Buy</button>
-                        </div>
-                        <div className="upgrade-div">
-                            <p>Upgrade 2</p>
-                            <button>Buy</button>
-                        </div>
-                        <div className="upgrade-div">
-                            <p>Upgrade 3</p>
-                            <button>Buy</button>
-                        </div>
-                        <div className="upgrade-div">
-                            <p>Upgrade 4</p>
-                            <button>Buy</button>
-                        </div>
-                     </div>
-                    <div className='stats-div'>
-                        <h3>Hours played</h3>
-                        <p>3</p>
-                        <h3>Total clicks</h3>
-                        <p>5923</p>
-                        <h3>Click power</h3>
-                        <p>32</p>
-                        <h3>Clicks per second</h3>
-                        <p>2.1</p>
-                        <h3>Achievements earned</h3>
-                        <p>12</p>
-                    </div>
-                    <div className='achievements-div'>
-                    </div>
+                    {section === "Upgrades" && <Upgrades/>}
+                    {section === "Stats" && <Stats/>}
+                    {section === "Achievements" && <Achievements/>}
                 </div>
-                
             </div>
         </div>
     );
