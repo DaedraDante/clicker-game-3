@@ -157,7 +157,7 @@ body {
   color: var(--text-color);
   margin-top: 20px;
 }
-.upgrades-div {
+.right-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,6 +166,20 @@ body {
   border: 5px solid var(--secondary-color);
   padding: 1rem;
   flex:4;
+}
+.select-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+.upgrades-div {
+  display: none;
+}
+.stats-div {
+  display: block;
+}
+.achievements-div {
+  display: none;
 }
 .upgrade-div {
   display: flex;
