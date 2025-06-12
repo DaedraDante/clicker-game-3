@@ -7,7 +7,15 @@ import Achievements from './Achievements';
 
 function ClickerScreen({setScreen}) {
     
-    const [section, setSection] = useState("Stats")
+    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+    const handleMouseMove = (event) => {
+        const rect = event.target.getBoundingClientRect()
+        setCursorPosition({
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+        })
+    };
+    const [section, setSection] = useState("Upgrades")
     const [dabloons, setDabaloons] = useState(0);
     const [increaseAmount, setIncreaseAmount] = useState(1);
     const [upgrade1Cost, setUpgrade1Cost] = useState(30);
@@ -26,18 +34,9 @@ function ClickerScreen({setScreen}) {
         setDabaloons(dabloons + increaseAmount);
     };
 
-    const handleUpgrade1 = () => {
-        if(dabloons >= upgrade1Cost) {
-            alert("You bought upgrade 1!");
-            setIncreaseAmount(increaseAmount + 1);
-            setDabaloons(dabloons - 30)
-        }else {
-            alert("Not enough Dabloons");
-        }
-    };
-
     return (
-        <div className="clicker-stage">
+        <div className="clicker-stage" onMouseMove={handleMouseMove}>
+            {/* <p>x: {cursorPosition.x} y: {cursorPosition.y}</p> */}
             <div className="img-div">
                 <img src={pixminn} alt="Pixmin Img" className='pixmin-img' onClick={handleClick}/>
                 <h1 className='money-text'>{dabloons} Dabloons</h1>
@@ -55,7 +54,12 @@ function ClickerScreen({setScreen}) {
                     </div>
                 </div>
                 <div className='content-div'>
-                    {section === "Upgrades" && <Upgrades/>}
+                    {section === "Upgrades" && <Upgrades dabloons={dabloons} 
+                    setDabaloons={setDabaloons} 
+                    increaseAmount={increaseAmount}
+                    setIncreaseAmount={setIncreaseAmount}
+                    upgrade1Cost={upgrade1Cost}
+                    setUpgrade1Cost={setUpgrade1Cost}/>}
                     {section === "Stats" && <Stats/>}
                     {section === "Achievements" && <Achievements/>}
                 </div>
