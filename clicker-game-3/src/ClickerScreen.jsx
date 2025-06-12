@@ -8,17 +8,25 @@ import Achievements from './Achievements';
 function ClickerScreen({setScreen}) {
     
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-    const handleMouseMove = (event) => {
-        const rect = event.target.getBoundingClientRect()
-        setCursorPosition({
-            x: event.clientX - rect.left,
-            y: event.clientY - rect.top
-        })
-    };
-    const [section, setSection] = useState("Upgrades")
+    const [popUpVisibility,setPopUpVisibility] = useState(true);
+    const [popUpText, setPopUpText] = useState("");
+    const [section, setSection] = useState("Upgrades");
     const [dabloons, setDabaloons] = useState(0);
     const [increaseAmount, setIncreaseAmount] = useState(1);
     const [upgrade1Cost, setUpgrade1Cost] = useState(30);
+
+    const handleMouseMove = (event) => {
+    // const rect = event.target.getBoundingClientRect()
+        setCursorPosition({
+            x: event.clientX,
+            y: event.clientY
+        });
+    };
+
+    const displayPopUp = (popUpText) => {
+       setPopUpVisibility(true);
+       setPopUpText(popUpText);
+    };
 
     const handleUpgradeSectionChange = () => {
         setSection("Upgrades");
@@ -36,6 +44,11 @@ function ClickerScreen({setScreen}) {
 
     return (
         <div className="clicker-stage" onMouseMove={handleMouseMove}>
+            {popUpVisibility === true && 
+            <div style={{position:"absolute",top:cursorPosition.y + "px",left:cursorPosition.x + "px"}}>
+                <p>{popUpText}</p>
+            </div>
+            }
             {/* <p>x: {cursorPosition.x} y: {cursorPosition.y}</p> */}
             <div className="img-div">
                 <img src={pixminn} alt="Pixmin Img" className='pixmin-img' onClick={handleClick}/>
@@ -54,12 +67,18 @@ function ClickerScreen({setScreen}) {
                     </div>
                 </div>
                 <div className='content-div'>
-                    {section === "Upgrades" && <Upgrades dabloons={dabloons} 
+                    {section === "Upgrades" && <Upgrades 
+                    
+                    dabloons={dabloons} 
                     setDabaloons={setDabaloons} 
                     increaseAmount={increaseAmount}
                     setIncreaseAmount={setIncreaseAmount}
                     upgrade1Cost={upgrade1Cost}
-                    setUpgrade1Cost={setUpgrade1Cost}/>}
+                    setUpgrade1Cost={setUpgrade1Cost}
+                    cursorPosition={cursorPosition}
+                    setPopUpVisibility={setPopUpVisibility}
+                    setPopUpText={setPopUpText}
+                    displayPopUp={displayPopUp}/>}
                     {section === "Stats" && <Stats/>}
                     {section === "Achievements" && <Achievements/>}
                 </div>

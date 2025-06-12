@@ -1,5 +1,7 @@
  
-function Upgrades({dabloons,setDabaloons, increaseAmount, setIncreaseAmount, upgrade1Cost, setUpgrade1Cost}) {
+function Upgrades({dabloons,setDabaloons, increaseAmount, 
+                   setIncreaseAmount, upgrade1Cost, setUpgrade1Cost,
+                   cursorPosition, setPopUpVisibility, setPopUpText}) {
     // const [dabloons, setDabaloons] = useState(0);
        const handleUpgrade1 = () => {
             if(dabloons >= upgrade1Cost) {
