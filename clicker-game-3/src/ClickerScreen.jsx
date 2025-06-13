@@ -7,8 +7,12 @@ import Achievements from './Achievements';
 
 function ClickerScreen({setScreen}) {
     
+    const [totalClicks, setTotalCicks] = useState(0);
+    const [clickForce, setClickForce] = useState(1);
+    const [cps, setCps] = useState(0);
+    const [achievementTotal, setAchievementTotal] = useState(0);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-    const [popUpVisibility,setPopUpVisibility] = useState(true);
+    const [popUpVisibility,setPopUpVisibility] = useState(false);
     const [popUpText, setPopUpText] = useState("");
     const [section, setSection] = useState("Upgrades");
     const [dabloons, setDabaloons] = useState(0);
@@ -39,13 +43,14 @@ function ClickerScreen({setScreen}) {
     };
 
     const handleClick = () => {
-        setDabaloons(dabloons + increaseAmount);
+        setDabaloons(dabloons + clickForce);
+        setTotalCicks(totalClicks + 1);
     };
 
     return (
         <div className="clicker-stage" onMouseMove={handleMouseMove}>
             {popUpVisibility === true && 
-            <div style={{position:"absolute",top:cursorPosition.y + "px",left:cursorPosition.x + "px"}}>
+            <div className='popup' style={{position:"absolute",top:cursorPosition.y + "px",left:cursorPosition.x + "px"}}>
                 <p>{popUpText}</p>
             </div>
             }
@@ -68,18 +73,31 @@ function ClickerScreen({setScreen}) {
                 </div>
                 <div className='content-div'>
                     {section === "Upgrades" && <Upgrades 
-                    
-                    dabloons={dabloons} 
-                    setDabaloons={setDabaloons} 
-                    increaseAmount={increaseAmount}
-                    setIncreaseAmount={setIncreaseAmount}
-                    upgrade1Cost={upgrade1Cost}
-                    setUpgrade1Cost={setUpgrade1Cost}
-                    cursorPosition={cursorPosition}
-                    setPopUpVisibility={setPopUpVisibility}
-                    setPopUpText={setPopUpText}
-                    displayPopUp={displayPopUp}/>}
-                    {section === "Stats" && <Stats/>}
+                        dabloons={dabloons} 
+                        setDabaloons={setDabaloons} 
+                        clickForce={clickForce}
+                        setClickForce={setClickForce}
+                        upgrade1Cost={upgrade1Cost}
+                        setUpgrade1Cost={setUpgrade1Cost}
+                        cursorPosition={cursorPosition}
+                        setPopUpVisibility={setPopUpVisibility}
+                        setPopUpText={setPopUpText}
+                        displayPopUp={displayPopUp}
+                        totalClicks={totalClicks}
+                        setTotalCicks={setTotalCicks}
+                        cps={cps}
+                        setCps={setCps}/>}
+                    {section === "Stats" && <Stats
+                        cursorPosition={cursorPosition}
+                        setPopUpVisibility={setPopUpVisibility}
+                        setPopUpText={setPopUpText}
+                        displayPopUp={displayPopUp}
+                        totalClicks={totalClicks}
+                        setTotalCicks={setTotalCicks}
+                        clickForce={clickForce}
+                        setClickForce={setClickForce}
+                        cps={cps}
+                        setCps={setCps}/>}
                     {section === "Achievements" && <Achievements/>}
                 </div>
             </div>
