@@ -135,6 +135,22 @@ body {
   height: 50px;
   font-size: 1.2rem;
 }
+.menu-btn {
+  width: 10rem;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 12rem;
+  position:absolute;
+  bottom: 5rem;
+  left: 5rem;
+
+}
 .clicker-stage {
   background-color: var(--primary-color);
   height: 95vh;

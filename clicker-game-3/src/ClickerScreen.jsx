@@ -19,6 +19,10 @@ function ClickerScreen({setScreen}) {
     const [increaseAmount, setIncreaseAmount] = useState(1);
     const [upgrade1Cost, setUpgrade1Cost] = useState(30);
 
+    const backToMenu = () => {
+        setScreen("MainMenu")
+    }
+
     const handleMouseMove = (event) => {
     // const rect = event.target.getBoundingClientRect()
         setCursorPosition({
@@ -44,7 +48,7 @@ function ClickerScreen({setScreen}) {
 
     const handleClick = () => {
         setDabaloons(dabloons + clickForce);
-        setTotalCicks(totalClicks + 1);
+        setTotalCicks(totalClicks + 0.1);
     };
 
     return (
@@ -55,6 +59,7 @@ function ClickerScreen({setScreen}) {
             </div>
             }
             {/* <p>x: {cursorPosition.x} y: {cursorPosition.y}</p> */}
+            <button className='menu-btn' onClick={backToMenu}>Back to menu</button>
             <div className="img-div">
                 <img src={pixminn} alt="Pixmin Img" className='pixmin-img' onClick={handleClick}/>
                 <h1 className='money-text'>{dabloons} Dabloons</h1>

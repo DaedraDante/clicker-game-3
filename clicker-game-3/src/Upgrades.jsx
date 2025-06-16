@@ -6,9 +6,10 @@ function Upgrades({dabloons,setDabaloons,
     // const [dabloons, setDabaloons] = useState(0);
        const handleUpgrade1 = () => {
             if(dabloons >= upgrade1Cost) {
-                alert("You bought upgrade 1!");
+                // alert("You bought upgrade 1!");
                 setClickForce(clickForce + 1);
                 setDabaloons(dabloons - upgrade1Cost)
+                setUpgrade1Cost(Math.round(upgrade1Cost * 1.5))
             }else {
                 alert("Not enough Dabloons");
             }
