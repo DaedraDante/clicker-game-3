@@ -9,7 +9,7 @@ function ClickerScreen({setScreen}) {
     
     const [totalClicks, setTotalCicks] = useState(0);
     const [clickForce, setClickForce] = useState(1);
-    const [cps, setCps] = useState(0);
+    const [cps, setCps] = useState(1);
     const [achievementTotal, setAchievementTotal] = useState(0);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const [popUpVisibility,setPopUpVisibility] = useState(false);
@@ -48,7 +48,7 @@ function ClickerScreen({setScreen}) {
 
     const handleClick = () => {
         setDabaloons(dabloons + clickForce);
-        setTotalCicks(totalClicks + 0.1);
+        setTotalCicks(totalClicks + 1);
     };
 
     return (

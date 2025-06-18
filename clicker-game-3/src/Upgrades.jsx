@@ -1,9 +1,21 @@
- 
+import { useEffect } from "react";
+
 function Upgrades({dabloons,setDabaloons,
                    upgrade1Cost,clickForce, setClickForce, setUpgrade1Cost,
                    cursorPosition, setPopUpVisibility, setPopUpText,
-                   displayPopUp}) {
-    // const [dabloons, setDabaloons] = useState(0);
+                   displayPopUp,cps,setCps}) {
+
+    useEffect(() => {
+        
+        if(cps > 0) {
+           const intervalId = setInterval(() => {
+                setDabaloons(prevDabloons => prevDabloons + cps)
+            }, 1000);
+            
+           return () => clearInterval(intervalId);
+        }
+    }, [cps]);
+
        const handleUpgrade1 = () => {
             if(dabloons >= upgrade1Cost) {
                 // alert("You bought upgrade 1!");
@@ -14,6 +26,13 @@ function Upgrades({dabloons,setDabaloons,
                 alert("Not enough Dabloons");
             }
         };
+
+        const handleAutoClick = () => {
+            console.log(dabloons);
+        }
+        // for(let i = 0;i<5;i++) {
+        //     handleAutoClick();
+        // }
     return (
         <div className='upgrades-div'>
             <div className="upgrade-div">
