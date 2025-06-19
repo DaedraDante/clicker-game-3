@@ -43,7 +43,7 @@ function Upgrades({dabloons,setDabloons,
           }else if(upgrade2Qty >= 25) {
             alert("You maxed this upgrade");
           }else {
-            alert("Not enough Dabloons");
+            alert('Not enough Dabloons');
           }
         }
         const handleAutoClick = () => {
