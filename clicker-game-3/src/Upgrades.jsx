@@ -7,7 +7,7 @@ function Upgrades({dabloons,setDabloons,
                    cursorPosition, setPopUpVisibility, setPopUpText,
                    displayPopUp,cps,setCps,upgrade1Qty,setUpgrade1Qty,
                    upgrade2Qty,setUpgrade2Qty,upgrade3Qty,setUpgrade3Qty,
-                   upgrade4Qty,setUpgrade4Qty,}) {
+                   upgrade4Qty,setUpgrade4Qty,clickSound,playClickSound,}) {
 
     //useEffect hook meant for autoClicking function that updates when 
     //the cps value changes
@@ -22,7 +22,7 @@ function Upgrades({dabloons,setDabloons,
     }, [cps]);
        // function meant for handling the Upgrade 1 Click Force
        const handleUpgrade1 = () => {
-            if(dabloons >= upgrade1Cost && upgrade1Qty <= 10) {
+            if(dabloons >= upgrade1Cost && upgrade1Qty <= 9) {
                 setClickForce(clickForce + 1);
                 setDabloons(dabloons - upgrade1Cost);
                 setUpgrade1Cost(Math.round(upgrade1Cost * 1.5));
@@ -56,14 +56,14 @@ function Upgrades({dabloons,setDabloons,
         <div className='upgrades-div'>
             <div className="upgrade-div">
                 <p>Upgrade Click Force</p>
-                <button onClick={handleUpgrade1} 
+                <button onClick={()=>{ clickSound.play(),handleUpgrade1()}} 
                         onMouseEnter={() => displayPopUp(`Cost:${upgrade1Cost}, +1 Click Force`)}
                         onMouseLeave={() => setPopUpVisibility(false)}
                         id="upgrade1Btn">Buy</button>
             </div>
             <div className="upgrade-div">
                 <p>Hire Hobos</p>
-                <button onClick={handleUpgrade2} 
+                <button onClick={() => {clickSound.play(),handleUpgrade2()}} 
                         onMouseEnter={() => displayPopUp(`Cost:${upgrade2Cost}, +1 CPS`)}
                         onMouseLeave={() => setPopUpVisibility(false)}
                         id="upgrade2Btn">Buy</button>

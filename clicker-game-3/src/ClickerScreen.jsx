@@ -3,10 +3,9 @@ import { useState } from 'react';
 import Upgrades from './Upgrades';
 import Stats from './Stats';
 import Achievements from './Achievements';
-
-
+import clickSoundFile from '/src/assets/button-pressed-38129.mp3';
 function ClickerScreen({setScreen}) {
-    
+    const [clickSound] = useState(() => new Audio(clickSoundFile));
     const [totalClicks, setTotalCicks] = useState(0);
     const [clickForce, setClickForce] = useState(1);
     const [cps, setCps] = useState(0);
@@ -29,7 +28,12 @@ function ClickerScreen({setScreen}) {
     const backToMenu = () => {
     setScreen("MainMenu")
     }
-
+    const playClickSound = () => {
+        clickSound.currentTime = 0; // Reset sound to start
+        clickSound.play().catch(error => {
+            console.error("Error playing sound:", error);
+        });
+    };
     const handleMouseMove = (event) => {
     // const rect = event.target.getBoundingClientRect()
     setCursorPosition({
@@ -66,7 +70,7 @@ function ClickerScreen({setScreen}) {
         </div>
         }
         {/* <p>x: {cursorPosition.x} y: {cursorPosition.y}</p> */}
-        <button className='menu-btn' onClick={backToMenu}>Back to menu</button>
+        <button className='menu-btn' onClick={() => {backToMenu(),playClickSound()}}>Back to menu</button>
         <div className="img-div">
             <img src={pixminn} alt="Pixmin Img" className='pixmin-img' onClick={handleClick}/>
             <h1 className='money-text'>{dabloons} Dabloons</h1>
@@ -87,6 +91,7 @@ function ClickerScreen({setScreen}) {
             </div>
             <div className='content-div'>
                 {section === "Upgrades" && <Upgrades 
+                    clickSound={clickSound}
                     dabloons={dabloons} 
                     setDabloons={setDabloons} 
                     clickForce={clickForce}
