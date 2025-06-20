@@ -1,7 +1,14 @@
 :root {
+  --text-color: #d2f1ed;
+  --background-color: #2084ac;
   --primary-color: #30bbdd;
   --secondary-color: #76d7f0;
-  --text-color: #d2f1ed;
+  --accent-color: #4151e4;
+  --text-color1: #f2f7f6;
+  --background-color1: #050a09;
+  --primary-color1:#49b6a2;
+  --secondary-color1:#246b5e;
+  --accent-color1:#299480;
 }
 body {
   font-family: "Press Start 2P", system-ui;
@@ -158,6 +165,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
 .img-div {
   display: flex;
@@ -183,6 +191,8 @@ body {
   margin-top: 20px;
 }
 .right-div {
+  background-color: var(--background-color);
+  height: 48rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -231,7 +241,8 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  width: 100%;
+  width: 100%;;
+  height: 8rem;
 }
 .upgrade-div button {
   width: 10rem;
@@ -243,4 +254,23 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+.upgrade-div button:hover {
+  background-color: var(--accent-color);
+}
+.stats-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.achievements-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
 }

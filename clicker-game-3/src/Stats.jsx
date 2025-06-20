@@ -2,15 +2,15 @@
 function Stats({totalClicks, setTotalClicks,cps, setCps, clickForce, setClickForce}) {
     return (       
      <div className='stats-div'>
-        <h3>Hours played</h3>
+        <p>Hours played</p>
         <p>3</p>
-        <h3>Total clicks</h3>
+        <p>Total clicks</p>
         <p>{totalClicks}</p>
-        <h3>Click force</h3>
+        <p>Click force</p>
         <p>{clickForce}</p>
-        <h3>Clicks per second</h3>
+        <p>Clicks per second</p>
         <p>{cps}</p>
-        <h3>Achievements earned</h3>
+        <p>Achievements earned</p>
         <p>12</p>
     </div>
     )

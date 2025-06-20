@@ -6,6 +6,7 @@ function App() {
   
   const [screen, setScreen] = useState('MainMenu')
   const [clickSound, setClickSound] = useState(new Audio('/src/assets/button-pressed-38129.mp3'));
+  const [music1, setMusic1] = useState(new Audio('/src/assets/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Music.mp3'));
   return (
     <>
     {screen === 'MainMenu' && <MainMenu onPlay={() => setScreen('ClickerScreen')} 

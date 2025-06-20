@@ -1,11 +1,15 @@
 import pixminn from './assets/pixminn.png';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import Upgrades from './Upgrades';
 import Stats from './Stats';
 import Achievements from './Achievements';
 import clickSoundFile from '/src/assets/button-pressed-38129.mp3';
+import music1 from '/src/assets/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Music.mp3';
+
 function ClickerScreen({setScreen}) {
     const [clickSound] = useState(() => new Audio(clickSoundFile));
+    // const [music1] = useState(() => new Audio(music1));
+    // music1.play();
     const [totalClicks, setTotalCicks] = useState(0);
     const [clickForce, setClickForce] = useState(1);
     const [cps, setCps] = useState(0);
@@ -92,6 +96,7 @@ function ClickerScreen({setScreen}) {
             <div className='content-div'>
                 {section === "Upgrades" && <Upgrades 
                     clickSound={clickSound}
+                    playClickSound={playClickSound}
                     dabloons={dabloons} 
                     setDabloons={setDabloons} 
                     clickForce={clickForce}

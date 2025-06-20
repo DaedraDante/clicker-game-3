@@ -70,11 +70,11 @@ function Upgrades({dabloons,setDabloons,
             </div>
             <div className="upgrade-div">
                 <p>Hire Low Wage Workers</p>
-                <button>Buy</button>
+                <button onClick={() => {clickSound.play(),handleUpgrade3()}}>Buy</button>
             </div>
             <div className="upgrade-div">
                 <p>Hire Salary men</p>
-                <button>Buy</button>
+                <button onClick={() => {clickSound.play(),handleUpgrade4()}}>Buy</button>
             </div>
         </div>
     )
