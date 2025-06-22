@@ -5,9 +5,10 @@ import Stats from './Stats';
 import Achievements from './Achievements';
 import clickSoundFile from '/src/assets/button-pressed-38129.mp3';
 import music1 from '/src/assets/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Music.mp3';
+import { useEffect } from 'react';
 
 function ClickerScreen({setScreen}) {
-    const [clickSound] = useState(() => new Audio(clickSoundFile));
+        const [clickSound] = useState(() => new Audio(clickSoundFile));
     // const [music1] = useState(() => new Audio(music1));
     // music1.play();
     const [totalClicks, setTotalCicks] = useState(0);
@@ -18,7 +19,10 @@ function ClickerScreen({setScreen}) {
     const [popUpVisibility,setPopUpVisibility] = useState(false);
     const [popUpText, setPopUpText] = useState("");
     const [section, setSection] = useState("Upgrades");
-    const [dabloons, setDabloons] = useState(0);
+    const [dabloons, setDabloons] = useState(() => {
+        const saved = localStorage.getItem("dabloons");
+        return saved !== null ? Number(saved) : 0;
+    })
     const [increaseAmount, setIncreaseAmount] = useState(1);
     const [upgrade1Cost, setUpgrade1Cost] = useState(30);
     const [upgrade2Cost, setUpgrade2Cost] = useState(30);
@@ -28,10 +32,26 @@ function ClickerScreen({setScreen}) {
     const [upgrade2Qty, setUpgrade2Qty] = useState(0);
     const [upgrade3Qty, setUpgrade3Qty] = useState(0);
     const [upgrade4Qty, setUpgrade4Qty] = useState(0);
+    //function to save dabloons
+
+    useEffect(() => {
+    const saveDabloons = () => {
+    localStorage.setItem("dabloons",dabloons.toString())
+    };
+      saveDabloons();
+    },[dabloons]);
+
+    //function to retrieve dabloons
+    useEffect(() => {
+        const savedDabloons = localStorage.getItem("dabloons");
+        if(savedDabloons !== null) {
+            setDabloons(Number(savedDabloons))
+        }
+    },[]);
 
     const backToMenu = () => {
     setScreen("MainMenu")
-    }
+    };
     const playClickSound = () => {
         clickSound.currentTime = 0; // Reset sound to start
         clickSound.play().catch(error => {
@@ -45,12 +65,10 @@ function ClickerScreen({setScreen}) {
         y: event.clientY
     });
     };
-
     const displayPopUp = (popUpText) => {
     setPopUpVisibility(true);
     setPopUpText(popUpText);
     };
-
     const handleUpgradeSectionChange = () => {
     setSection("Upgrades");
     };
@@ -60,7 +78,6 @@ function ClickerScreen({setScreen}) {
     const handleAchievementsSectionChange = () => {
     setSection("Achievements");
     };
-
     const handleClick = () => {
     setDabloons(dabloons + clickForce);
     setTotalCicks(totalClicks + 1);

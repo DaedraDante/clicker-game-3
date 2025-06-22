@@ -38,7 +38,7 @@ function Upgrades({dabloons,setDabloons,
           if(dabloons >= upgrade2Cost && upgrade2Qty <= 25) {
             setCps(prevCps => prevCps + 1);
             setDabloons(prevDabloons => prevDabloons - upgrade2Cost);
-            setUpgrade2Cost(Math.round(upgrade2Cost * 1.5));
+            setUpgrade2Cost(Math.round(upgrade2Cost * 1.25));
             setUpgrade2Qty(prevUpgrade2Qty => prevUpgrade2Qty + 1);
           }else if(upgrade2Qty >= 25) {
             alert("You maxed this upgrade");
