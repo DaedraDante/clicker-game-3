@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import MainMenu from './MainMenu'
 import ClickerScreen from './ClickerScreen'
+import Options from './Options'
 
 function App() {
   
@@ -10,11 +11,12 @@ function App() {
   return (
     <>
     {screen === 'MainMenu' && <MainMenu onPlay={() => setScreen('ClickerScreen')} 
-    onOptions={() => setScreen('options')} 
+    onOptions={() => setScreen('Options')} 
     onCredits={() => setScreen('credits')} 
     clickSound={clickSound}
 />}
     {screen === 'ClickerScreen' && <ClickerScreen setScreen={setScreen} />}
+    {screen === 'Options' && <Options setScreen={setScreen}/>}
     </>
     
   )

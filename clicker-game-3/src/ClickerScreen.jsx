@@ -8,7 +8,7 @@ import music1 from '/src/assets/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Musi
 import { useEffect } from 'react';
 
 function ClickerScreen({setScreen}) {
-        const [clickSound] = useState(() => new Audio(clickSoundFile));
+    const [clickSound] = useState(() => new Audio(clickSoundFile));
     // const [music1] = useState(() => new Audio(music1));
     // music1.play();
     const [totalClicks, setTotalCicks] = useState(0);
@@ -20,9 +20,9 @@ function ClickerScreen({setScreen}) {
     const [popUpText, setPopUpText] = useState("");
     const [section, setSection] = useState("Upgrades");
     const [dabloons, setDabloons] = useState(() => {
-        const saved = localStorage.getItem("dabloons");
-        return saved !== null ? Number(saved) : 0;
-    })
+        const savedDabloons = localStorage.getItem("dabloons");
+        return savedDabloons !== null ? Number(savedDabloons) : 0;
+    });
     const [increaseAmount, setIncreaseAmount] = useState(1);
     const [upgrade1Cost, setUpgrade1Cost] = useState(30);
     const [upgrade2Cost, setUpgrade2Cost] = useState(30);

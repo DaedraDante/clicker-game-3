@@ -12,7 +12,7 @@ function MainMenu({onPlay, onOptions, onCredits, clickSound, setClickSound}) {
                         <span>Play</span>
                     </div>
                 </button>
-                <button className="button" onClick={() => {clickSound.play()}}>
+                <button className="button" onClick={() => {onOptions(),clickSound.play()}}>
                     <span className="shadow"></span>
                     <span className="edge"></span>
                     <div className="front">
